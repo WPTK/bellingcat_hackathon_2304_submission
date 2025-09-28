@@ -1,47 +1,71 @@
-##### bellingcat_hackathon_2304_submission
+# Bombardier Watch  
+### Bellingcat Hackathon Submission (April 2023)  
 
-# BOMBARDIER WATCH
+**Team:** Jackmaster  
+**Member:** [Jack Kerr](https://github.com/jckkrr)  
 
-## Team Members
-Jack Kerr 
-https://github.com/jckkrr
+---
 
-Group name: Jackmaster
+## Overview  
+Bombardier Watch is a prototype tool that analyzes business jet movements using data from [ADS-B Exchange](https://www.adsbexchange.com/).  
 
-## Tool Description
-Unfiltered crowd-sourced flight-tracking service ADS-B Exchange offer an excellent view of air traffic movements. But finding out who is on board is another matter. This tool provides one solution to that: by showing which of these jets arrived or departed from the same location on the same day, it may be possible to work out who met who.
+While ADS-B Exchange provides an unfiltered, crowd-sourced view of global air traffic, identifying *who* is on board is a different challenge. This tool offers one approach: by showing which jets arrived or departed from the same locations on the same day, it may be possible to infer meetings and connections between individuals or organizations.  
 
-Development notes: 
-- Data source from ADS-B Exchange. 
-- This protype model uses data from one day, as recorded at the start of each minute. 
-- Results filter to only include Bombardier, Gulfstream, Dassault and Embraer business jets that are show as "grounded".
+---
 
+## Development Notes  
+- Data source: **ADS-B Exchange**  
+- Prototype model uses **one day of data**, recorded at the start of each minute  
+- Results are filtered to only include **Bombardier, Gulfstream, Dassault, and Embraer** business jets that are listed as **“grounded”**  
 
-## Installation
-Access the app via your browser at https://jckkrr-bellingcat-hackathon-2304-submissio-streamlit-app-4xfjl3.streamlit.app/
+---
 
-Part of my philosophy with building intelligence tools is people with few technological skills (like journalists and lawyers) need to be able to use them. Therefore, I make my tools available via Streamlit, which allows Python scripts to be deployed online. It can be buggy, however. In ancy case, no installation is required.
+## Installation  
+You can access the app directly in your browser via Streamlit:  
+👉 [Launch the App](https://jckkrr-bellingcat-hackathon-2304-submissio-streamlit-app-4xfjl3.streamlit.app/)  
 
+Streamlit was chosen so that people without technical skills (such as journalists or lawyers) can use the tool easily. No installation is required. Note: Streamlit deployments can occasionally be unstable.  
 
-## Usage
+---
 
-![image](https://user-images.githubusercontent.com/69304112/233846351-947c5fde-e061-49f5-8d02-b3de6450d0ca.png)
+## Usage  
 
-As this a prototype with limited access to data, only one day of data is availalbe, and therefore the date dropdown has been disabled.
+### Example Visualizations  
+![Jet List](https://user-images.githubusercontent.com/69304112/233846351-947c5fde-e061-49f5-8d02-b3de6450d0ca.png)  
 
-![image](https://user-images.githubusercontent.com/69304112/233846488-2f688dff-dda6-4054-b826-e37b7451fb00.png)
+As this is a prototype with limited access to data, only **one day** is available. The **date dropdown** has been disabled.  
 
-The globe shows where business jets were recorded as being on the ground. This provides insights into unusual locations business jets may be.
+![Globe View](https://user-images.githubusercontent.com/69304112/233846488-2f688dff-dda6-4054-b826-e37b7451fb00.png)  
 
-![image](https://user-images.githubusercontent.com/69304112/233846567-abb6242c-c742-44d2-b6d2-f346bbcfe628.png)
+The **globe visualization** shows where business jets were recorded as being on the ground, highlighting unusual or noteworthy locations.  
 
-This section allows you to chose a location where jets were recorded, and examine the results for interesting matches. Unfortunately, the majority of planes are registered to charter companies, but this tool will still be able to produce interesting results over time.
+---
 
-![image](https://user-images.githubusercontent.com/69304112/233846689-4f8a14da-3bd5-435c-8cb8-e6b9cd720443.png)
+### Location Search  
+This section allows you to choose a location where jets were recorded and review potential matches. While many planes are registered to charter companies, meaningful patterns can still emerge over time.  
 
-Lastly, it is possible to check by company, and see which other registered owners their jet(s) were in the same location as.
+![Location Example](image-placeholder.png)  
 
-## Additional Information
+---
 
-ADS-B Exchange makes historical data available in 5-second snapshots - a total of 17280 files per day. This means that a few hours of observations can. when combined, result in massive dataframes of millions of rows. Accessing this data would be ideal. This repository contins one file for downloading a day's data, one for compiling it into a dataframe, and another for cleaning this up and adding plane registrant details. In this second stage, filters are applied so that only business jets are included in the concatenated dataframe, in order to make the dataframe a more manageable size. Whiledata from every 5 seconds is available, this app only uses data from every 60 seconds. 
+### Company Search  
+You can also search by **company/owner** to see which other registered owners their jets shared a location with.  
 
+![Company Example](image-placeholder.png)  
+
+---
+
+## Additional Information  
+ADS-B Exchange provides historical data in **5-second snapshots**, totaling 17,280 files per day. Combining just a few hours of this data can produce dataframes with millions of rows. Accessing the full dataset would be ideal for scaling the tool.  
+
+This repository includes:  
+- A script for **downloading a day’s worth of data**  
+- A script for **compiling data into a dataframe**  
+- A script for **cleaning data and adding registrant details**  
+
+During the cleaning stage, filters ensure only business jets are included in the concatenated dataframe, keeping it manageable in size. While data is available every 5 seconds, this app currently uses snapshots taken every 60 seconds.  
+
+---
+
+## License  
+This project is licensed under the [MIT License](LICENSE).  
